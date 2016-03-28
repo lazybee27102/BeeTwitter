@@ -49,13 +49,14 @@ The following **additional** features are implemented:
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
-[Youtube]() 
+[Youtube](https://youtu.be/UB3WyFIaCes) 
 
 
 ## Notes
 
 - The API and Documentation are hard to understand 
 - The user interface is really complicated to create before deadline
+- When I am test in real phone,video is very cool,but it isn't in Genymotion.
 ## Open-source libraries used
 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
