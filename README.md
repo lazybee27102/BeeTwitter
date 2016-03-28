@@ -53,7 +53,7 @@ Here's a walkthrough of implemented user stories:
 
 ## Notes
 
-- The API is complicated with something in documentation
+- The API and Documentation are hard to understand 
 - The user interface is really complicated to create before deadline
 ## Open-source libraries used
 
