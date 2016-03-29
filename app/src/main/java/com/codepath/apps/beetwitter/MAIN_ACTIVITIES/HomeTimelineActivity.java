@@ -1,4 +1,4 @@
-package com.codepath.apps.beetwitter;
+package com.codepath.apps.beetwitter.MAIN_ACTIVITIES;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,7 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.codepath.apps.beetwitter.OTHER_USEFUL_CLASS.EndlessRecyclerViewScrollListener;
+import com.codepath.apps.beetwitter.OTHER_USEFUL_CLASS.GlobalVariable;
+import com.codepath.apps.beetwitter.R;
 import com.codepath.apps.beetwitter.TWEET_RECYCLERVIEW.TweetAdapter;
+import com.codepath.apps.beetwitter.TWITTER_CLIENT.TwitterApplication;
+import com.codepath.apps.beetwitter.TWITTER_CLIENT.TwitterClient;
 import com.codepath.apps.beetwitter.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -35,8 +40,8 @@ public class HomeTimelineActivity extends AppCompatActivity {
     private ArrayList<Tweet> tweets;
     private FloatingActionButton button;
     private SwipeRefreshLayout swipeContainer;
-    public static int page = 1;
     private LinearLayoutManager linearLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +56,7 @@ public class HomeTimelineActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading data...");
         progressDialog.show();
         client = TwitterApplication.getInstance(this);
-        populateTimeline(1);
+        populateTimeline();
     }
 
     private void handleEvent() {
@@ -71,7 +76,7 @@ public class HomeTimelineActivity extends AppCompatActivity {
             @Override
 
             public void onRefresh() {
-                populateTimeline(1);
+                populateTimeline();
                 swipeContainer.setRefreshing(false);
             }
 
@@ -80,13 +85,12 @@ public class HomeTimelineActivity extends AppCompatActivity {
         recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
-                progressDialog.show();
-                client.getTimeline(page,new JsonHttpResponseHandler() {
+                Long tweet_uid = tweets.get(tweets.size()-1).getUid();
+                client.getTimelineWithMaxId(tweet_uid - 1L, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                         super.onSuccess(statusCode, headers, response);
-                        if (progressDialog.isShowing())
-                            progressDialog.dismiss();
+                        Toast.makeText(HomeTimelineActivity.this, "Loading more...", Toast.LENGTH_SHORT).show();
                         int size = adapter.getItemCount();
                         tweets.addAll(Tweet.fromJSONArray(response));
                         adapter.notifyItemRangeInserted(size, tweets.size() - 1);
@@ -96,7 +100,7 @@ public class HomeTimelineActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                         super.onFailure(statusCode, headers, throwable, errorResponse);
-                        Log.d("ERROR",errorResponse.toString());
+                        Log.d("ERROR", errorResponse.toString());
                         Toast.makeText(HomeTimelineActivity.this, "There is some problem when connecting to twitter", Toast.LENGTH_SHORT).show();
 
                     }
@@ -106,6 +110,9 @@ public class HomeTimelineActivity extends AppCompatActivity {
     }
 
     private void registerWidgets() {
+
+
+
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -120,8 +127,8 @@ public class HomeTimelineActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void populateTimeline(int page) {
-        client.getTimeline(page,new JsonHttpResponseHandler() {
+    private void populateTimeline() {
+        client.getTimeline(1L,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
@@ -157,7 +164,7 @@ public class HomeTimelineActivity extends AppCompatActivity {
             case R.id.menu_action_profile:
             {
                 Intent i = getIntent();
-                String id =i.getStringExtra(GlobalVariable.CURRENT_USER_ID);
+                String id = i.getStringExtra(GlobalVariable.CURRENT_USER_ID);
                 Intent profile = new Intent(HomeTimelineActivity.this,ProfileActivity.class);
                 profile.putExtra(GlobalVariable.CURRENT_USER_ID,id);
                 startActivity(profile);
@@ -165,6 +172,11 @@ public class HomeTimelineActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        populateTimeline();
     }
 }

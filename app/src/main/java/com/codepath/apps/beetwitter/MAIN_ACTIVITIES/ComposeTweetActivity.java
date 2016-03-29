@@ -1,6 +1,5 @@
-package com.codepath.apps.beetwitter;
+package com.codepath.apps.beetwitter.MAIN_ACTIVITIES;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -8,15 +7,16 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.codepath.apps.beetwitter.models.User;
+import com.codepath.apps.beetwitter.OTHER_USEFUL_CLASS.GlobalVariable;
+import com.codepath.apps.beetwitter.R;
+import com.codepath.apps.beetwitter.TWITTER_CLIENT.TwitterApplication;
+import com.codepath.apps.beetwitter.TWITTER_CLIENT.TwitterClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;

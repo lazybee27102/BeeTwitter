@@ -1,4 +1,4 @@
-package com.codepath.apps.beetwitter;
+package com.codepath.apps.beetwitter.COMMENT_RETWEET_LIKE_SHARE;
 
 
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.apps.beetwitter.OTHER_USEFUL_CLASS.GlobalVariable;
+import com.codepath.apps.beetwitter.R;
 import com.codepath.apps.beetwitter.models.Tweet;
 
 /**

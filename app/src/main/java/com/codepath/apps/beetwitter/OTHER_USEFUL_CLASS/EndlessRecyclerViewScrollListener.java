@@ -1,4 +1,4 @@
-package com.codepath.apps.beetwitter;
+package com.codepath.apps.beetwitter.OTHER_USEFUL_CLASS;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

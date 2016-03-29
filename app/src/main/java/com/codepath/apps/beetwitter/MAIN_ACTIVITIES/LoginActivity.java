@@ -1,12 +1,14 @@
-package com.codepath.apps.beetwitter;
+package com.codepath.apps.beetwitter.MAIN_ACTIVITIES;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
+import com.codepath.apps.beetwitter.OTHER_USEFUL_CLASS.GlobalVariable;
+import com.codepath.apps.beetwitter.R;
+import com.codepath.apps.beetwitter.TWITTER_CLIENT.TwitterApplication;
+import com.codepath.apps.beetwitter.TWITTER_CLIENT.TwitterClient;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 import com.loopj.android.http.JsonHttpResponseHandler;
 

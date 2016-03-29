@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".TwitterApplication"
+        android:name=".TWITTER_CLIENT.TwitterApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -27,7 +27,7 @@
             android:value="1" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".MAIN_ACTIVITIES.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -46,17 +46,17 @@
                     android:scheme="oauth" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeTimelineActivity" />
+        <activity android:name=".MAIN_ACTIVITIES.HomeTimelineActivity" />
         <activity
-            android:name=".ComposeTweetActivity"
-            android:parentActivityName=".HomeTimelineActivity"
+            android:name=".MAIN_ACTIVITIES.ComposeTweetActivity"
+            android:parentActivityName=".MAIN_ACTIVITIES.HomeTimelineActivity"
             android:label="Compose new tweet" >
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".HomeTimelineActivity"/>
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MAIN_ACTIVITIES.HomeTimelineActivity"/>
         </activity>
 
-        <activity android:name=".ProfileActivity" android:parentActivityName=".HomeTimelineActivity"
+        <activity android:name=".MAIN_ACTIVITIES.ProfileActivity" android:parentActivityName=".MAIN_ACTIVITIES.HomeTimelineActivity"
             android:label="User">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".HomeTimelineActivity"/>
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MAIN_ACTIVITIES.HomeTimelineActivity"/>
 
 
         </activity>

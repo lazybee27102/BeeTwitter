@@ -20,12 +20,12 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
-import com.codepath.apps.beetwitter.CommentFragment;
-import com.codepath.apps.beetwitter.GlobalVariable;
+import com.codepath.apps.beetwitter.COMMENT_RETWEET_LIKE_SHARE.CommentFragment;
+import com.codepath.apps.beetwitter.OTHER_USEFUL_CLASS.GlobalVariable;
 import com.codepath.apps.beetwitter.R;
-import com.codepath.apps.beetwitter.RetweetFragment;
-import com.codepath.apps.beetwitter.TwitterApplication;
-import com.codepath.apps.beetwitter.TwitterClient;
+import com.codepath.apps.beetwitter.COMMENT_RETWEET_LIKE_SHARE.RetweetFragment;
+import com.codepath.apps.beetwitter.TWITTER_CLIENT.TwitterApplication;
+import com.codepath.apps.beetwitter.TWITTER_CLIENT.TwitterClient;
 import com.codepath.apps.beetwitter.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 

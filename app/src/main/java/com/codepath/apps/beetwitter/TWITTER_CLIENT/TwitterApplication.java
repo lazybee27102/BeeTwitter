@@ -1,4 +1,4 @@
-package com.codepath.apps.beetwitter;
+package com.codepath.apps.beetwitter.TWITTER_CLIENT;
 
 import android.content.Context;
 

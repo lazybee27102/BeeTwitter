@@ -1,4 +1,4 @@
-package com.codepath.apps.beetwitter;
+package com.codepath.apps.beetwitter.TWITTER_CLIENT;
 
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.FlickrApi;
@@ -42,15 +42,24 @@ public class TwitterClient extends OAuthBaseClient {
 		params.put("format", "json");
 		client.get(apiUrl, params, handler);
 	}*/
-
-	public void getTimeline(int since_id,AsyncHttpResponseHandler handler)
+	public void getTimeline(Long sinceId,AsyncHttpResponseHandler handler)
 	{
 		String apiURL = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
 		params.put("count",25);
-		params.put("since_id",since_id);
+		params.put("since_id",sinceId);
+		getClient().get(apiURL, params, handler);
+	}
+	public void getTimelineWithMaxId(Long maxId,AsyncHttpResponseHandler handler)
+	{
+		String apiURL = getApiUrl("statuses/home_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("count",25);
+		params.put("max_id",maxId);
 		getClient().get(apiURL,params,handler);
 	}
+
+
 
 	public void getCurrentUser(AsyncHttpResponseHandler handler)
 	{

@@ -1,4 +1,4 @@
-package com.codepath.apps.beetwitter;
+package com.codepath.apps.beetwitter.OTHER_USEFUL_CLASS;
 
 import android.app.Activity;
 import android.content.Context;
